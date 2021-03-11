@@ -18,7 +18,7 @@ public class CreateArrayMenu {
                     ManualCreateArrayMenu.showMenu(scanner);
                     break;
                 case 2:
-                    CreateMatrixMenu.showMenu(scanner);
+                    RandomCreateArrayMenu.showMenu(scanner);
                     break;
                 case 0:
                     return;
