@@ -15,7 +15,7 @@ public class CreateArrayMenu {
             int i = scanner.nextInt();
             switch (i) {
                 case 1:
-                    CreateArrayMenu.showMenu(scanner);
+                    ManualCreateArrayMenu.showMenu(scanner);
                     break;
                 case 2:
                     CreateMatrixMenu.showMenu(scanner);

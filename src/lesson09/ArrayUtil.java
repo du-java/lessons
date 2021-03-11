@@ -7,7 +7,7 @@ public class ArrayUtil {
         System.out.println(msg);
         return scanner.nextInt();
     }
-    static int[] array(int size){
+    static int[] createArray(int size){
         return new int[size];
     }
     static int getElementOfArray(Scanner scanner, int max){
@@ -16,5 +16,12 @@ public class ArrayUtil {
             finish = getInt(scanner, "write number");
         } while( finish>=max);
         return finish;
+    }
+    static int[] createManualFilledArray(int sizeArray, int maxElement, Scanner scanner){
+        int[] array = createArray(sizeArray);
+        for (int i = 0; i < sizeArray; i++) {
+            array[i] = getElementOfArray(scanner,maxElement);
+        }
+        return array;
     }
 }
