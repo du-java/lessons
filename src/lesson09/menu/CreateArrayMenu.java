@@ -1,4 +1,4 @@
-package lesson09;
+package lesson09.menu;
 
 import java.util.Scanner;
 
@@ -7,8 +7,8 @@ public class CreateArrayMenu {
     static void showMenu(Scanner scanner) {
         while (true) {
             System.out.println("Create ArrayMenu");
-            System.out.println("1 - Manual filing array");
-            System.out.println("2 - Random");
+            System.out.println("1 - Manual filling array");
+            System.out.println("2 - Random filling array");
             System.out.println("0 - Exit");
             System.out.print("Choose: ");
             System.out.println();

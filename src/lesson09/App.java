@@ -1,5 +1,7 @@
 package lesson09;
 
+import lesson09.menu.MainMenu;
+
 import java.util.Scanner;
 
 public class App {
@@ -7,5 +9,4 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         MainMenu.showMenu(scanner);
     }
-
 }

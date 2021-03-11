@@ -1,23 +1,24 @@
-package lesson09;
+package lesson09.menu;
 
 import java.util.Scanner;
 
-public class CreateMatrixMenu {
-    static void showMenu(Scanner scanner) {
+public class MainMenu {
+
+    public static void showMenu(Scanner scanner) {
         while (true) {
-            System.out.println("Create MatrixMenu");
-            System.out.println("1 - Manual filing array");
-            System.out.println("2 - Random");
+            System.out.println("Main Menu");
+            System.out.println("1 - Create Array");
+            System.out.println("2 - Create Matrix");
             System.out.println("0 - Exit");
             System.out.print("Choose: ");
             System.out.println();
             int i = scanner.nextInt();
             switch (i) {
                 case 1:
-                    ManualCreateMatrixMenu.showMenu(scanner);
+                    CreateArrayMenu.showMenu(scanner);
                     break;
                 case 2:
-                    RandomCreateMatrixMenu.showMenu(scanner);
+                    CreateMatrixMenu.showMenu(scanner);
                     break;
                 case 0:
                     return;

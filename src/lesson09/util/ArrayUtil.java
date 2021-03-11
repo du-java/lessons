@@ -1,32 +1,35 @@
-package lesson09;
+package lesson09.util;
 
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class ArrayUtil {
-    static Random random = new Random();
+    private static Random random = new Random();
 
-    static int getInt(Scanner scanner, String msg) {
-        System.out.println(msg);
-        return scanner.nextInt();
+    public static int getArraySize(Scanner scanner) {
+        int size;
+        do {
+            size = InputUtil.getInt(scanner, "input size of array");
+        } while (size < 0);
+        return size;
     }
 
-    static int[] createArray(int size) {
+    private static int[] createArray(int size) {
         return new int[size];
     }
 
-    static int getElementOfArray(Scanner scanner, int max, int index) {
+    private static int getElementOfArray(Scanner scanner, int max, int index) {
         int finish;
         while (true) {
-            finish = getInt(scanner, "write number for " + index + " less than " + max);
+            finish = InputUtil.getInt(scanner, "write number for " + index + " less than " + max);
             if (finish < max) break;
             System.out.println("More than max!");
         }
         return finish;
     }
 
-    static int[] createManualFilledArray(int sizeArray, int maxElement, Scanner scanner) {
+    public static int[] createManualFilledArray(int sizeArray, int maxElement, Scanner scanner) {
         int[] array = createArray(sizeArray);
         for (int i = 0; i < sizeArray; i++) {
             array[i] = getElementOfArray(scanner, maxElement, i);
@@ -41,7 +44,8 @@ public class ArrayUtil {
         }
         return array;
     }
-    static void printArray (int [] array) {
+
+    public static void printArray(int[] array) {
         System.out.println(Arrays.toString(array));
     }
 }
