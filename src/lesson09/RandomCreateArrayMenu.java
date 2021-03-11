@@ -8,7 +8,7 @@ public class RandomCreateArrayMenu {
         int size = ArrayUtil.getInt(scanner, "size");
         int value = ArrayUtil.getInt(scanner, "Max value");
         int[] array = ArrayUtil.createRandomFilledArray(size, value);
-        System.out.println(Arrays.toString(array));
+        ArrayUtil.printArray(array);
 
 
     }

@@ -1,5 +1,6 @@
 package lesson09;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -39,5 +40,8 @@ public class ArrayUtil {
             array[i] = random.nextInt(max);
         }
         return array;
+    }
+    static void printArray (int [] array) {
+        System.out.println(Arrays.toString(array));
     }
 }
