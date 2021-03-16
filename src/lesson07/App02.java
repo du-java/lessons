@@ -13,7 +13,7 @@ public class App02 {
 
         Pattern pattern = Pattern.compile("\\+(\\d{1,3})\\D*(\\d\\D*\\d)\\D*" +
                 "(\\d\\D*\\d\\D*\\d\\D*\\d\\D*\\d\\D*\\d\\D*\\d)");
-        Matcher matcher = pattern.matcher(str);
+        Matcher matcher = pattern.matches(str);
 
         while (matcher.find()) {
             int groupCount = matcher.groupCount();
