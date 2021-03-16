@@ -1,7 +1,7 @@
-package lesson10;
+package lesson10.transport;
 
-import lesson10.abstracts.Movable;
-import lesson10.abstracts.Transport;
+import lesson10.transport.abstracts.Movable;
+import lesson10.transport.abstracts.Transport;
 
 public class App02 {
     public static void main(String[] args) {

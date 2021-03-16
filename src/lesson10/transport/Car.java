@@ -1,6 +1,6 @@
-package lesson10;
+package lesson10.transport;
 
-import lesson10.abstracts.Transport;
+import lesson10.transport.abstracts.Transport;
 
 public class Car extends Transport {
     private int doorCount;

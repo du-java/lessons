@@ -1,4 +1,4 @@
-package lesson10.abstracts;
+package lesson10.transport.abstracts;
 
 public abstract class Transport implements Movable {
 

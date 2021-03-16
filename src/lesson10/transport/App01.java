@@ -1,4 +1,6 @@
-package lesson10;
+package lesson10.transport;
+
+import lesson10.transport.Car;
 
 public class App01 {
     public static void main(String[] args) {

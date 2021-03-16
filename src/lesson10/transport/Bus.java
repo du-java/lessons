@@ -1,6 +1,6 @@
-package lesson10;
+package lesson10.transport;
 
-import lesson10.abstracts.Commute;
+import lesson10.transport.abstracts.Commute;
 
 public class Bus extends Commute {
     public Bus() {
