@@ -8,4 +8,6 @@ public interface Account {
 
     Money status();
 
+    void print();
+
 }
