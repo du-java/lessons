@@ -5,24 +5,21 @@ public abstract class AbstractAccount implements Account {
     protected Money currentAmount;
 
     public AbstractAccount(int percent, Money currentAmount) {
-        if (percent > 0 && currentAmount.getMoneyLow() > 0) {
-            this.percent = percent;
-            this.currentAmount = currentAmount;
+        if (percent <= 0) {
+            throw new IllegalArgumentException("wrong percent");
         }
+        this.percent = percent;
+        this.currentAmount = currentAmount;
     }
 
     @Override
     public void addMoney(Money money) {
-        if (money != null && money.getMoneyLow() > 0) {
-            this.currentAmount.setMoneyLow(this.currentAmount.getMoneyLow() + money.getMoneyLow());
-        }
+        currentAmount = currentAmount.add(money);
     }
 
     @Override
     public void withdraw(Money money) {
-        if (money != null && money.getMoneyLow() > 0 && money.getMoneyLow() <= currentAmount.getMoneyLow()) {
-            this.currentAmount.setMoneyLow(this.currentAmount.getMoneyLow() - money.getMoneyLow());
-        }
+        currentAmount = currentAmount.sub(money);
     }
 
     @Override

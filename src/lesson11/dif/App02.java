@@ -7,7 +7,10 @@ public class App02 {
 
         transports[0] = new Car();
 
-        Transport tractor_is_driving = new Transport() {
+        Transport tractor_is_driving = () -> System.out.println("123");
+
+
+        new Transport() {
             @Override
             public void drive() {
                 System.out.println("tractor is driving");
