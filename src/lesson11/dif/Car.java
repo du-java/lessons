@@ -1,4 +1,4 @@
-package lesson11;
+package lesson11.dif;
 
 public class Car implements Transport {
 

@@ -1,4 +1,4 @@
-package lesson11;
+package lesson11.dif;
 
 public class AdvHuman extends Human {
     public AdvHuman(String name) {

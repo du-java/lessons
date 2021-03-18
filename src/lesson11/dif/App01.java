@@ -1,4 +1,4 @@
-package lesson11;
+package lesson11.dif;
 
 import lesson10.AbstractFish;
 import lesson10.KarpRiverFish;
