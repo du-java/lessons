@@ -8,7 +8,7 @@ public class CreditAccount extends AbstractAccount {
 
     @Override
     public Money status() {
-       currentAmount.setMoneyLow( currentAmount.getMoneyLow() - (currentAmount.getMoneyLow() /100 ) * percent);
-       return currentAmount;
+        currentAmount = currentAmount.sub(currentAmount.percent(percent));
+        return currentAmount;
     }
 }
