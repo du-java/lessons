@@ -10,7 +10,6 @@ public class App03 {
 //        integer = Integer.parseInt("1s");
 
         integer++;
-
         System.out.println(integer);
 
         Integer integer2 = new Integer(2);

@@ -15,9 +15,7 @@ public class Door {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Door door = (Door) o;
-
         return doorState == door.doorState;
     }
 
