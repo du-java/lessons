@@ -1,4 +1,4 @@
-package lesson13;
+package lesson13.generics;
 
 public class App01 {
     public static void main(String[] args) {

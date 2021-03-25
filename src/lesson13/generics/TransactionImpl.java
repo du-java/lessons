@@ -1,4 +1,4 @@
-package lesson13;
+package lesson13.generics;
 
 public class TransactionImpl<T extends Account> implements Transaction<T> {
 

@@ -1,4 +1,4 @@
-package lesson13;
+package lesson13.generics;
 
 public abstract class AbstractAccount implements Account {
     public AbstractAccount(int amount) {
