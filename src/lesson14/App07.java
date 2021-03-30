@@ -1,7 +1,6 @@
 package lesson14;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class App07 {
     public static void main(String[] args) {
@@ -17,9 +16,29 @@ public class App07 {
                 int count = map.get(word);
                 map.put(word, ++count);
             } else {
-            map.put(word,1);
+                map.put(word, 1);
             }
         }
         System.out.println(map);
+        Map<String, Integer> sortedByValue = sortByValue(map);
+        System.out.println(sortedByValue);
+    }
+
+    public static Map<String, Integer> sortByValue(Map<String, Integer> map) {
+        List<Map.Entry<String, Integer>> listEntries = new ArrayList<>(map.entrySet());
+        listEntries.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+
+        Map<String, Integer> result = new LinkedHashMap<>();
+        for (int i = 0, listEntriesSize = listEntries.size(); i < listEntriesSize; i++) {
+            Map.Entry<String, Integer> entry = listEntries.get(i);
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
     }
 }
