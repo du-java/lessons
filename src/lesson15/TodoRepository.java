@@ -123,7 +123,6 @@ public class TodoRepository {
         return events;
     }
 
-
     private List<Task> getTaskList() {
         List<Task> taskList = new ArrayList<>();
         for (Todo todo : getTodos(ToDoType.TASK)) {
@@ -131,5 +130,29 @@ public class TodoRepository {
             taskList.add(task);
         }
         return taskList;
+    }
+
+    private <K, V> Map<V, K> swap(Map<K, V> map) {
+        Map<V, K> swapMap = new HashMap<>();
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            swapMap.put(entry.getValue(), entry.getKey());
+        }
+        return swapMap;
+    }
+
+    private <K, V> Map<V, Collection<K>> swap1(Map<K, V> map) {
+        Map<V, Collection<K>> swapMap = new HashMap<>();
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            Collection<K> collection = swapMap.get(entry.getValue());
+
+            if (collection == null) {
+                swapMap.put(entry.getValue(), Collections.singletonList(entry.getKey()));
+            } else {
+                List<K> list = new ArrayList<>(collection);
+                list.add(entry.getKey());
+                swapMap.put(entry.getValue(), list);
+            }
+        }
+        return swapMap;
     }
 }
