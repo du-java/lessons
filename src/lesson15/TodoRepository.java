@@ -67,5 +67,35 @@ public class TodoRepository {
         }
         return taskList;
     }
+    public List<Task> getSortedTasksByTime() {
+        List<Task> taskList = getTaskList();
+        taskList.sort(new Comparator<Task>() {
+            @Override
+            public int compare(Task o1, Task o2) {
 
+                return o1.getTime().compareTo(o2.getTime());
+            }
+        });
+        return taskList;
+    }
+    public List<Task> getSortedTasksByCount() {
+        List<Task> taskList = getTaskList();
+        taskList.sort(new Comparator<Task>() {
+            @Override
+            public int compare(Task o1, Task o2) {
+
+                return o1.getSubTaskList().size()-o2.getSubTaskList().size();
+            }
+        });
+        return taskList;
+    }
+
+    private List<Task> getTaskList() {
+        List<Task> taskList = new ArrayList<>();
+        for (Todo todo : getTodos(ToDoType.TASK)) {
+            Task task = (Task) todo;
+        taskList.add(task);
+        }
+        return taskList;
+    }
 }
