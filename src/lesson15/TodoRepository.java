@@ -35,7 +35,6 @@ public class TodoRepository {
     public void add(String type, Todo todo) {
         ToDoType key = ToDoType.valueOf(type.toUpperCase(Locale.ROOT));
         List<Todo> todos = this.map.get(key);
-
         if (todos == null) {
             map.put(key, Collections.singletonList(todo));
         } else {
@@ -57,7 +56,6 @@ public class TodoRepository {
     }
 
     public List<Event> getEvents(LocalDateTime time) {
-
         List<Event> taskList = new ArrayList<>();
         for (Todo todo : getTodos(ToDoType.EVENT)) {
             Event event = (Event) todo;
@@ -67,34 +65,67 @@ public class TodoRepository {
         }
         return taskList;
     }
+
     public List<Task> getSortedTasksByTime() {
         List<Task> taskList = getTaskList();
         taskList.sort(new Comparator<Task>() {
             @Override
             public int compare(Task o1, Task o2) {
-
                 return o1.getTime().compareTo(o2.getTime());
             }
         });
         return taskList;
     }
+
     public List<Task> getSortedTasksByCount() {
         List<Task> taskList = getTaskList();
-        taskList.sort(new Comparator<Task>() {
+        Comparator<Task> comparator = new Comparator<Task>() {
             @Override
             public int compare(Task o1, Task o2) {
-
-                return o1.getSubTaskList().size()-o2.getSubTaskList().size();
+                return o1.getSubTaskList().size() - o2.getSubTaskList().size();
             }
-        });
+        };
+        taskList.sort(comparator.reversed());
         return taskList;
     }
+
+    public List<Event> getSortedEventsByStartTime() {
+        List<Event> eventList = getEventList();
+        eventList.sort(new Comparator<Event>() {
+            @Override
+            public int compare(Event o1, Event o2) {
+                return o1.getStartTime().compareTo(o2.getStartTime());
+            }
+        });
+        return eventList;
+    }
+
+    public List<Event> getSortedEventsByBusy() {
+        List<Event> eventList = getEventList();
+        eventList.sort(new Comparator<Event>() {
+            @Override
+            public int compare(Event o1, Event o2) {
+                return Boolean.compare(o2.isBusy(), o1.isBusy());
+            }
+        });
+        return eventList;
+    }
+
+    private List<Event> getEventList() {
+        List<Event> events = new ArrayList<>();
+        for (Todo todo : getTodos(ToDoType.EVENT)) {
+            Event event = (Event) todo;
+            events.add(event);
+        }
+        return events;
+    }
+
 
     private List<Task> getTaskList() {
         List<Task> taskList = new ArrayList<>();
         for (Todo todo : getTodos(ToDoType.TASK)) {
             Task task = (Task) todo;
-        taskList.add(task);
+            taskList.add(task);
         }
         return taskList;
     }
