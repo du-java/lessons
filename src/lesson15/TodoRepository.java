@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 public class TodoRepository {
 
     private Map<ToDoType, List<Todo>> map = new HashMap<>();
+
     private static final Logger logger = Logger.getLogger(TodoRepository.class.getName());
 
     public List<Todo> getTodos(ToDoType type) {
@@ -25,6 +26,8 @@ public class TodoRepository {
         } catch (IllegalArgumentException e) {
             logger.log(Level.SEVERE, e.getMessage(), e);
             return Collections.emptyList();
+//            throw  new IllegalArgumentException();
+//            throw e;
         }
     }
 
@@ -44,7 +47,7 @@ public class TodoRepository {
         }
     }
 
-    public List<Task> getTasks(LocalDate date) {
+    public List<Task> getTasksByDate(LocalDate date) {
         List<Task> taskList = new ArrayList<>();
         for (Todo todo : getTodos(ToDoType.TASK)) {
             Task task = (Task) todo;
@@ -55,7 +58,7 @@ public class TodoRepository {
         return taskList;
     }
 
-    public List<Event> getEvents(LocalDateTime time) {
+    public List<Event> getEventsByTime(LocalDateTime time) {
         List<Event> taskList = new ArrayList<>();
         for (Todo todo : getTodos(ToDoType.EVENT)) {
             Event event = (Event) todo;
