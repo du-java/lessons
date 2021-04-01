@@ -1,5 +1,7 @@
 package lesson15;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,4 +44,14 @@ public class TodoRepository {
             map.put(key, list);
         }
     }
+
+    public List<Task> getTasks(LocalDate date) {
+
+
+    }
+
+    public List<Event> getEvents(LocalDateTime time) {
+
+    }
+
 }
