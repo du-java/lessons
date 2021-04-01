@@ -46,10 +46,10 @@ public class TodoRepository {
     }
 
     public List<Task> getTasks(LocalDate date) {
-    List<Task> taskList = new ArrayList<>();
+        List<Task> taskList = new ArrayList<>();
         for (Todo todo : getTodos(ToDoType.TASK)) {
-            Task task = (Task)todo;
-            if(date.equals(task.getTime().toLocalDate())){
+            Task task = (Task) todo;
+            if (date.equals(task.getTime().toLocalDate())) {
                 taskList.add(task);
             }
         }
@@ -58,6 +58,14 @@ public class TodoRepository {
 
     public List<Event> getEvents(LocalDateTime time) {
 
+        List<Event> taskList = new ArrayList<>();
+        for (Todo todo : getTodos(ToDoType.EVENT)) {
+            Event event = (Event) todo;
+            if (time.isAfter(event.getStartTime()) && time.isBefore(event.getEndTime())) {
+                taskList.add(event);
+            }
+        }
+        return taskList;
     }
 
 }
