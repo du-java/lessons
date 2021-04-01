@@ -7,6 +7,9 @@ public class App01 {
 
         todoRepository.getTodos("asd");
 
+        todoRepository.add(ToDoType.TASK, new Task());
+        todoRepository.add(ToDoType.TASK, new Task());
+
 
     }
 }
