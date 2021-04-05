@@ -132,7 +132,7 @@ public class TodoRepository {
         return taskList;
     }
 
-    private <K, V> Map<V, K> swap(Map<K, V> map) {
+    private <K, V> Map<V, K> swapKVToVK(Map<K, V> map) {
         Map<V, K> swapMap = new HashMap<>();
         for (Map.Entry<K, V> entry : map.entrySet()) {
             swapMap.put(entry.getValue(), entry.getKey());
@@ -140,11 +140,10 @@ public class TodoRepository {
         return swapMap;
     }
 
-    private <K, V> Map<V, Collection<K>> swap1(Map<K, V> map) {
+    private <K, V> Map<V, Collection<K>> swapKVToVCollectionK(Map<K, V> map) {
         Map<V, Collection<K>> swapMap = new HashMap<>();
         for (Map.Entry<K, V> entry : map.entrySet()) {
             Collection<K> collection = swapMap.get(entry.getValue());
-
             if (collection == null) {
                 swapMap.put(entry.getValue(), Collections.singletonList(entry.getKey()));
             } else {
@@ -155,4 +154,5 @@ public class TodoRepository {
         }
         return swapMap;
     }
+
 }
