@@ -124,7 +124,18 @@ public class CustomLinkedList<T> implements List<T> {
 
     @Override
     public boolean addAll(int index, Collection<? extends T> c) {
-        return false;
+
+        Node<T> nodeByIndex = getNodeByIndex(index);
+        if (nodeByIndex == null) {
+            return addAll(c);
+        }
+        int sizeStart = size;
+        int counter = index;
+        for (T t : c) {
+            add(counter++, t);
+        }
+
+        return sizeStart != size;
     }
 
     @Override
@@ -149,11 +160,16 @@ public class CustomLinkedList<T> implements List<T> {
         if (isEmpty()) return null;
         if (index == 0) return first.item;
         if (index == size - 1) return last.item;
+        Node<T> curr = getNodeByIndex(index);
+        return curr.item;
+    }
+
+    private Node<T> getNodeByIndex(int index) {
         Node<T> curr = first;
-        for (int i = index + 1; i < size; i++) {
+        for (int i = index; i < size; i++) {
             curr = curr.next;
         }
-        return curr.item;
+        return curr;
     }
 
     @Override
@@ -163,7 +179,14 @@ public class CustomLinkedList<T> implements List<T> {
 
     @Override
     public void add(int index, T element) {
-
+        Node<T> nodeByIndex = getNodeByIndex(index);
+        Node<T> prev = nodeByIndex.prev;
+        Node<T> tnode = new Node<T>();
+        tnode.prev = prev;
+        tnode.next = nodeByIndex;
+        nodeByIndex.prev = tnode;
+        tnode.item = element;
+        size++;
     }
 
     @Override
