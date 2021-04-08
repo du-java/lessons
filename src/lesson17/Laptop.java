@@ -9,6 +9,14 @@ public class Laptop extends Computer {
         this.size = size;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
     @Override
     public int compareTo(Computer comp) {
         if (comp.getClass() == Laptop.class) {
