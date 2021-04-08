@@ -1,6 +1,16 @@
 package lesson17;
 
 public class Computer implements Comparable<Computer> {
+    private String name;
+    private Cpu cpu;
+    private Motherboard motherboard;
+    private int ram;
+
+    @Override
+    public int compareTo(Computer o) {
+        return this.name.compareTo(o.name);
+    }
+
     public Cpu getCpu() {
         return cpu;
     }
@@ -11,15 +21,5 @@ public class Computer implements Comparable<Computer> {
 
     public int getRam() {
         return ram;
-    }
-
-    private String name;
-    private Cpu cpu;
-    private Motherboard motherboard;
-    private int ram;
-
-    @Override
-    public int compareTo(Computer o) {
-        return this.name.compareTo(o.name);
     }
 }

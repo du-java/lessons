@@ -16,5 +16,27 @@ public class App {
                 return o1.getCpu().getModelName().compareTo(o2.getCpu().getModelName());
             }
         });
+
+
+        List<Cpu> cpus = new ArrayList<>();
+
+        GenCpuComparator genCpuComparator = new GenCpuComparator();
+        cpus.sort(genCpuComparator); // genCpuComparator.compare(cpus.get(0), cpus.get(1))
+//        cpus.sort(Comparator.naturalOrder());
+
+
+        List<Integer> asd = new ArrayList<>();
+        asd.sort(Comparator.naturalOrder());
+
+
+        List<Laptop> laptops = new ArrayList<>();
+        laptops.add(new Laptop("l1", 15));
+        laptops.add(new Laptop("l3", 16));
+        laptops.add(new Laptop("l2", 17));
+
+        laptops.sort(Comparator.naturalOrder());
+
+        System.out.println(laptops);
+
     }
 }
