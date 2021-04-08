@@ -1,6 +1,6 @@
 package lesson17;
 
-public class Pc extends Computer  {
+public class Pc extends Computer {
     public Keyboard getKeyboard() {
         return keyboard;
     }
@@ -11,7 +11,6 @@ public class Pc extends Computer  {
 
     @Override
     public int compareTo(Computer computer) {
-
         if (computer instanceof Pc) {
             Pc pc = (Pc) computer;
             return this.monitor.compareTo(pc.monitor);
