@@ -1,6 +1,5 @@
 package lesson18;
 
-import javafx.beans.binding.StringBinding;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
