@@ -9,7 +9,7 @@ public class App05 {
         try (final FileOutputStream audiFos = new FileOutputStream("audi.bin");
              final ObjectOutputStream objectOutputStream = new ObjectOutputStream(audiFos)) {
             final Tyre sava = new Tyre("sava", 15);
-            final lesson18.sub.Car audi = new lesson18.sub.Car(123, "audi", Arrays.asList(sava, sava, sava, sava));
+            final Car audi = new Car(123, "audi", Arrays.asList(sava, sava, sava, sava), "secret");
             objectOutputStream.writeObject(audi);
         } catch (IOException ex) {
             System.err.println(ex.getMessage());

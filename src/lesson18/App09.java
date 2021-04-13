@@ -7,8 +7,7 @@ import java.io.IOException;
 public class App09 {
     public static void main(String[] args) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("array.txt"))) {
-
-            String array = null;
+            String array;
             int count = 0;
             int length = 0;
             while ((array = bufferedReader.readLine()) != null) {
@@ -18,10 +17,8 @@ public class App09 {
                 }
             }
             System.out.printf("Strings %s, Symbols %s ", count, length);
-
-        } catch (IOException e){
-
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
-
     }
 }

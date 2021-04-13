@@ -1,10 +1,8 @@
 package lesson18;
 
-import java.awt.image.ImagingOpException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,26 +20,22 @@ public class App08 {
             strings.add(buildString(j));
         }
 
-      try(  BufferedWriter bfw = new BufferedWriter(new FileWriter("array.txt"))) {
-          for (String string : strings) {
-
-              bfw.write(string);
-              bfw.newLine();
-          }
-        }catch (IOException ex){
-          System.err.println("error");
-      }
+        try (BufferedWriter bfw = new BufferedWriter(new FileWriter("array.txt"))) {
+            for (String string : strings) {
+                bfw.write(string);
+                bfw.newLine();
+            }
+        } catch (IOException ex) {
+            System.err.println("error");
+        }
     }
 
-    private static String buildString(int j){
+    private static String buildString(int j) {
         StringBuilder element = new StringBuilder();
         Random random = new Random();
-
         for (int k = 0; k < j; k++) {
-
             element.append((char) random.nextInt(256));
-
         }
-       return element.toString();
+        return element.toString();
     }
 }

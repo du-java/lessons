@@ -7,11 +7,13 @@ public class Car implements Serializable {
     private int power;
     private String name;
     private List<Tyre> tyres;
+    private transient String secret;
 
-    public Car(int power, String name, List<Tyre> tyres) {
+    public Car(int power, String name, List<Tyre> tyres, String secret) {
         this.power = power;
         this.name = name;
         this.tyres = tyres;
+        this.secret = secret;
     }
 
     @Override
@@ -20,6 +22,7 @@ public class Car implements Serializable {
                 "power=" + power +
                 ", name='" + name + '\'' +
                 ", tyres=" + tyres +
+                ", secret='" + secret + '\'' +
                 '}';
     }
 }
