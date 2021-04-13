@@ -1,6 +1,9 @@
 .idea/
 *.iml
 
+*.txt
+*.bin
+
 # Compiled class file
 *.class
 
