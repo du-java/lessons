@@ -8,7 +8,7 @@ import java.util.List;
 
 public class App04 {
     public static void main(String[] args) throws IOException {
-        write(Arrays.asList(
+        List<Student> list = Arrays.asList(
                 new Student("Sasha", "Ivanov", LocalDate.of(2000, 1, 1), "g1", 1.58, 175),
                 new Student("Sasha", "Ivanov", LocalDate.of(2000, 1, 1), "g1", 1.58, 175),
                 new Student("Sasha", "Ivanov", LocalDate.of(2000, 1, 1), "g1", 1.58, 175),
@@ -75,8 +75,9 @@ public class App04 {
                 new Student("Sasha", "Ivanov", LocalDate.of(2000, 1, 1), "g1", 1.58, 175),
                 new Student("Sasha", "Ivanov", LocalDate.of(2000, 1, 1), "g1", 1.58, 175),
                 new Student("Sasha", "Ivanov", LocalDate.of(2000, 1, 1), "g1", 1.58, 175),
-                new Student("Masha", "Ivanova", LocalDate.of(2001, 11, 11), "g1", 5.8, 155))
-        );
+                new Student("Masha", "Ivanova", LocalDate.of(2001, 11, 11), "g1", 5.8, 155));
+        write(list);
+        tcv(list);
 //        System.out.println(read());
     }
 
@@ -107,6 +108,20 @@ public class App04 {
             System.err.println(ex.getMessage());
         }
         return students;
+    }
+
+    private static void tcv(List<Student> students){
+        try (BufferedWriter bf = new BufferedWriter(new FileWriter("data.csv"))) {
+            bf.write("pole1");
+            bf.newLine();
+            for (Student student: students) {
+                bf.write(student.csv());
+                bf.newLine();
+            }
+
+    } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
