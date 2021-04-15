@@ -10,6 +10,19 @@ public class Student {
     private double weight;
     private long height;
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", birthday=" + birthday +
+                ", group='" + group + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                '}';
+    }
+
+
     public String getFirstname() {
         return firstname;
     }
