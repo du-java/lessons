@@ -1,8 +1,6 @@
 package lesson19;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class App01 {
     public static void main(String[] args) throws IOException {

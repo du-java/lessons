@@ -23,7 +23,7 @@ public class Student {
     }
 
     public String csv() {
-        return firstname + ',' + lastname + ',' + birthday +','+ group +','+ weight +','+ height;
+        return firstname + ',' + lastname + ',' + birthday + ',' + group + ',' + weight + ',' + height;
     }
 
     public String getFirstname() {
