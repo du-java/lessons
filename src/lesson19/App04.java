@@ -2,9 +2,7 @@ package lesson19;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class App04 {
     public static void main(String[] args) throws IOException {
@@ -78,6 +76,7 @@ public class App04 {
                 new Student("Masha", "Ivanova", LocalDate.of(2001, 11, 11), "g1", 5.8, 155));
         write(list);
         tcv(list);
+        System.out.println(readCSV());
 //        System.out.println(read());
     }
 
@@ -122,6 +121,31 @@ public class App04 {
     } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private static List<Student> readCSV (){
+        try(BufferedReader reader= new BufferedReader(new FileReader("data.csv"))){
+            reader.readLine();
+            String line;
+            ArrayList<Student> students = new ArrayList<>();
+            while ((line= reader.readLine())!=null){
+                students.add(parseStudent(line));
+            }
+            return students;
+        } catch (IOException e) {
+           return Collections.emptyList();
+        }
+    }
+    private static Student parseStudent(String line){
+        String[] split = line.split(",");
+        Student student = new Student();
+        student.setFirstname(split[0]);
+        student.setLastname(split[1]);
+        student.setBirthday(LocalDate.parse(split[2]));
+        student.setGroup(split[3]);
+        student.setWeight(Double.parseDouble(split[4]));
+        student.setHeight(Long.parseLong(split[5]));
+        return student;
+
     }
 }
 

@@ -50,6 +50,33 @@ public class Student {
         return height;
     }
 
+    public Student() {
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setHeight(long height) {
+        this.height = height;
+    }
+
     public Student(String firstname, String lastname, LocalDate birthday, String group, double weight, long height) {
         this.firstname = firstname;
         this.lastname = lastname;
