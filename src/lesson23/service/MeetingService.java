@@ -2,7 +2,6 @@ package lesson23.service;
 
 import lesson23.model.Meeting;
 import lesson23.repository.MeetingRepository;
-import lesson23.repository.Repository;
 
 import java.time.LocalDate;
 import java.util.Collections;
@@ -22,12 +21,8 @@ public class MeetingService extends AbstractService<Meeting> {
         return meetingRepository.getAllBy(x -> {
             LocalDate start = x.getStart().toLocalDate();
             LocalDate end = x.getEnd().toLocalDate();
-            return start.equals(localDate) ||
-                    end.equals(localDate) ||
-                    (start.isBefore(localDate) &&
-                            end.isAfter(localDate));
-
+            return start.equals(localDate) || end.equals(localDate) ||
+                    (start.isBefore(localDate) && end.isAfter(localDate));
         });
-
     }
 }

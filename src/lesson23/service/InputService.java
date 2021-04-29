@@ -30,7 +30,6 @@ public class InputService {
                 processingInvalidInput();
             }
         }
-
     }
 
     public String getLine(String msg) {
