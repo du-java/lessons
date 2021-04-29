@@ -6,8 +6,9 @@ import lesson23.model.Meeting;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
-public class MeetingRepository implements Repository {
+public class MeetingRepository implements Repository<Meeting> {
 
     private final List<Meeting> meetingList = new ArrayList<>();
 
@@ -20,12 +21,21 @@ public class MeetingRepository implements Repository {
     }
 
     @Override
-    public void add(Event event) {
-        if (event == null) {
+    public void add(Meeting meeting) {
+        if (meeting == null) {
             return;
         }
-        Meeting meeting = (Meeting) event;
         meeting.setId(meetingList.size());
         meetingList.add(meeting);
+    }
+
+    @Override
+    public List<Meeting> getAll() {
+        return null;
+    }
+
+    @Override
+    public List<Meeting> getAllBy(Predicate<Meeting> predicate) {
+        return null;
     }
 }
