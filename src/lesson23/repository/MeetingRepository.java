@@ -1,7 +1,6 @@
 package lesson23.repository;
 
 import lesson23.exception.NotFoundException;
-import lesson23.model.Event;
 import lesson23.model.Meeting;
 
 import java.util.ArrayList;

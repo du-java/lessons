@@ -21,6 +21,13 @@ public class Meeting implements Event {
         this.desc = desc;
     }
 
+    public Meeting(String place, LocalDateTime start, LocalDateTime end, String desc) {
+        this.place = place;
+        this.start = start;
+        this.end = end;
+        this.desc = desc;
+    }
+
     @Override
     public int getId() {
         return id;
