@@ -6,18 +6,19 @@ public class HomeController {
 
     private final InputService inputService;
     private final MeetingController meetingController;
+    private final TaskController taskController;
 
-    public HomeController(InputService inputService, MeetingController meetingController) {
+    public HomeController(InputService inputService, MeetingController meetingController, TaskController taskController) {
         this.inputService = inputService;
         this.meetingController = meetingController;
+        this.taskController = taskController;
     }
 
     public void show() {
-
         System.out.println("ToDo List Application");
-
         while (true) {
             System.out.println("1 - Meetings");
+            System.out.println("2 - Tasks");
             System.out.println("0 - Exit");
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
@@ -26,6 +27,9 @@ public class HomeController {
                     System.exit(0);
                 case 1:
                     meetingController.show();
+                    break;
+                case 2:
+                    taskController.show();
                     break;
             }
         }

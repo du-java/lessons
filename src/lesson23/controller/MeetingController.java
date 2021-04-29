@@ -25,8 +25,8 @@ public class MeetingController {
             System.out.println("1 - Add meeting");
             System.out.println("2 - Show all meetings");
             System.out.println("3 - Show filtered meetings");
-            System.out.println("4 - Edit meeting");
-            System.out.println("5 - Delete meeting");
+//            System.out.println("4 - Edit meeting");
+//            System.out.println("5 - Delete meeting");
             System.out.println("0 - Return");
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
