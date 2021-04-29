@@ -5,10 +5,14 @@ import lesson23.model.Event;
 import lesson23.model.Meeting;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class MeetingRepository implements Repository<Meeting> {
+
+    private int currentId = 0;
 
     private final List<Meeting> meetingList = new ArrayList<>();
 
@@ -25,17 +29,20 @@ public class MeetingRepository implements Repository<Meeting> {
         if (meeting == null) {
             return;
         }
-        meeting.setId(meetingList.size());
+        meeting.setId(++currentId);
         meetingList.add(meeting);
     }
 
     @Override
     public List<Meeting> getAll() {
-        return null;
+        return meetingList;
     }
 
     @Override
     public List<Meeting> getAllBy(Predicate<Meeting> predicate) {
-        return null;
+        if(predicate == null) return Collections.emptyList();
+        return meetingList.stream()
+                .filter(predicate)
+                .collect(Collectors.toList());
     }
 }
