@@ -2,6 +2,7 @@ package lesson23.repository;
 
 import lesson23.exception.NotFoundException;
 import lesson23.model.Event;
+import lesson23.service.FileService;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,6 +15,11 @@ public abstract class AbstractRepository<T extends Event> implements Repository<
     private int currentId = 0;
 
     private final List<T> meetingList = new ArrayList<>();
+    private final FileService<T> fileService;
+
+    protected AbstractRepository(final FileService<T> fileService) {
+        this.fileService = fileService;
+    }
 
     @Override
     public T getById(final int id) {
@@ -54,12 +60,21 @@ public abstract class AbstractRepository<T extends Event> implements Repository<
         meetingList.add(idx, t);
     }
 
-    private int getIdx(int id) {
-        final T prev = getById(id);
-        return meetingList.indexOf(prev);
+    @Override
+    public void delete(final int id) {
+        meetingList.remove(getIdx(id));
     }
 
-    public void delete(int id){
-        meetingList.remove(getIdx(id));
+    public void load() {
+        meetingList.addAll(fileService.load());
+    }
+
+    public void store() {
+        fileService.store(meetingList);
+    }
+
+    private int getIdx(final int id) {
+        final T prev = getById(id);
+        return meetingList.indexOf(prev);
     }
 }

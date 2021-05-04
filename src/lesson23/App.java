@@ -4,6 +4,7 @@ import lesson23.controller.*;
 import lesson23.repository.MeetingRepository;
 import lesson23.repository.TaskRepository;
 import lesson23.service.InputService;
+import lesson23.service.MeetingFileService;
 import lesson23.service.MeetingService;
 import lesson23.service.TaskService;
 
@@ -20,11 +21,14 @@ public class App {
     }
 
     private static MeetingController getMeetingController(final InputService inputService) {
+        final MeetingRepository meetingRepository = new MeetingRepository(new MeetingFileService());
+        meetingRepository.load();
+
         final FilteredMeetingController filteredMeetingController
-                = new FilteredMeetingController(new MeetingService(new MeetingRepository()), inputService);
+                = new FilteredMeetingController(new MeetingService(meetingRepository), inputService);
         final EditMeetingController editMeetingController
-                = new EditMeetingController(new MeetingService(new MeetingRepository()), inputService);
-        return new MeetingController(new MeetingService(new MeetingRepository()), inputService,
+                = new EditMeetingController(new MeetingService(meetingRepository), inputService);
+        return new MeetingController(new MeetingService(meetingRepository), inputService,
                 filteredMeetingController, editMeetingController);
     }
 }
