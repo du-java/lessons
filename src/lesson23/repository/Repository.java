@@ -13,4 +13,6 @@ public interface Repository<T extends Event> {
     List<T> getAll();
 
     List<T> getAllBy(Predicate<T> predicate);
+
+    void save(T t);
 }

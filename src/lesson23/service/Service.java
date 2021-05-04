@@ -10,4 +10,6 @@ public interface Service<T extends Event> {
     void add(T t);
 
     List<T> getAll();
+
+    void save(T t);
 }

@@ -2,7 +2,7 @@ package lesson23.controller;
 
 import lesson23.service.InputService;
 
-public class HomeController {
+public class HomeController implements Controller {
 
     private final InputService inputService;
     private final MeetingController meetingController;

@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 public class InputService {
 
-    public static final String DATE_TIME_PATTERN = "yy-MM-dd H-mm";
-    public static final String DATE_PATTERN = "yy-MM-dd";
+    private static final String DATE_TIME_PATTERN = "yy-MM-dd H-mm";
+    private static final String DATE_PATTERN = "yy-MM-dd";
 
     private final Scanner scanner;
 
@@ -43,6 +43,11 @@ public class InputService {
         return nextInt;
     }
 
+    public int nextInt(final String msg) {
+        System.out.println(msg);
+        return nextInt();
+    }
+
     public LocalDate getLocalDate(String msg) {
         while (true) {
             try {
@@ -66,6 +71,7 @@ public class InputService {
                 throw new StopException();
             }
         } catch (InputMismatchException ignored) {
+            System.out.println();
         }
     }
 }

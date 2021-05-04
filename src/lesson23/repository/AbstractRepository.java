@@ -16,7 +16,7 @@ public class AbstractRepository<T extends Event> implements Repository<T> {
     private final List<T> meetingList = new ArrayList<>();
 
     @Override
-    public T getById(int id) {
+    public T getById(final int id) {
         return meetingList.stream()
                 .filter(x -> x.getId() == id)
                 .findFirst()
@@ -24,7 +24,7 @@ public class AbstractRepository<T extends Event> implements Repository<T> {
     }
 
     @Override
-    public void add(T t) {
+    public void add(final T t) {
         if (t == null) {
             return;
         }
@@ -38,10 +38,20 @@ public class AbstractRepository<T extends Event> implements Repository<T> {
     }
 
     @Override
-    public List<T> getAllBy(Predicate<T> predicate) {
-        if (predicate == null) return Collections.emptyList();
+    public List<T> getAllBy(final Predicate<T> predicate) {
+        if (predicate == null) {
+            return Collections.emptyList();
+        }
         return meetingList.stream()
                 .filter(predicate)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void save(final T t) {
+        final int id = t.getId();
+        final T prev = getById(id);
+        final int idx = meetingList.indexOf(prev);
+        meetingList.add(idx, t);
     }
 }

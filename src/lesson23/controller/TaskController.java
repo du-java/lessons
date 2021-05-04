@@ -4,7 +4,7 @@ import lesson23.model.Task;
 import lesson23.service.InputService;
 import lesson23.service.TaskService;
 
-public class TaskController {
+public class TaskController implements Controller {
 
     private final InputService inputService;
     private final TaskService taskService;
