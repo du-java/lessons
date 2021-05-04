@@ -8,7 +8,11 @@ public class HomeController implements Controller {
     private final MeetingController meetingController;
     private final TaskController taskController;
 
-    public HomeController(InputService inputService, MeetingController meetingController, TaskController taskController) {
+    public HomeController(
+            final InputService inputService,
+            final MeetingController meetingController,
+            final TaskController taskController
+    ) {
         this.inputService = inputService;
         this.meetingController = meetingController;
         this.taskController = taskController;
@@ -23,14 +27,15 @@ public class HomeController implements Controller {
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
             switch (nextInt) {
-                case 0:
-                    System.exit(0);
                 case 1:
                     meetingController.show();
                     break;
                 case 2:
                     taskController.show();
                     break;
+                case 0:
+                    return;
+                default:
             }
         }
     }

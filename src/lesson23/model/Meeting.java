@@ -71,8 +71,12 @@ public class Meeting implements Event {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Meeting meeting = (Meeting) o;
 
@@ -95,12 +99,6 @@ public class Meeting implements Event {
 
     @Override
     public String toString() {
-        return "Meeting{" +
-                "id=" + id +
-                ", place='" + place + '\'' +
-                ", start=" + start +
-                ", end=" + end +
-                ", desc='" + desc + '\'' +
-                '}';
+        return id + "," + place + "," + start + "," + end + "," + desc;
     }
 }

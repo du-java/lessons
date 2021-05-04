@@ -1,15 +1,13 @@
 package lesson23.service;
 
-import lesson23.model.Meeting;
 import lesson23.model.Task;
 
-import java.time.LocalDateTime;
 import java.util.function.Function;
 
 public class TaskFileService extends AbstractFileService<Task> {
 
-    public TaskFileService() {
-        super("task.db", getParse());
+    public TaskFileService(final String path) {
+        super(path, getParse());
     }
 
     private static Function<String, Task> getParse() {

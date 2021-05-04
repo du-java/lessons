@@ -49,8 +49,9 @@ public class MeetingController {
                 case 4:
                     editMeetingController.show();
                     break;
-                case 5 :
+                case 5:
                     delete();
+                    break;
                 case 0:
                     return;
                 default:
@@ -80,7 +81,7 @@ public class MeetingController {
         System.out.println();
     }
 
-    public void delete(){
+    public void delete() {
         int id = inputService.nextInt("Input id to delete");
         meetingService.delete(id);
     }

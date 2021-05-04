@@ -48,8 +48,8 @@ public class FilteredMeetingController implements Controller {
         System.out.println("Show filtered meetings between dates");
         final List<Meeting> allBetween;
         try {
-            final LocalDate from = inputService.getLocalDate("Input date from");
-            final LocalDate to = inputService.getLocalDate("Input date to");
+            final LocalDate from = inputService.getLocalDate("Input date (%s) from: ");
+            final LocalDate to = inputService.getLocalDate("Input date (%s) to: ");
             allBetween = meetingService.getAllBetween(from, to);
         } catch (StopException ex) {
             return;

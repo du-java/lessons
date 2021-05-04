@@ -6,13 +6,14 @@ import lesson23.service.FileService;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public abstract class AbstractRepository<T extends Event> implements Repository<T> {
 
-    private int currentId = 0;
+    private int currentId;
 
     private final List<T> meetingList = new ArrayList<>();
     private final FileService<T> fileService;
@@ -36,6 +37,7 @@ public abstract class AbstractRepository<T extends Event> implements Repository<
         }
         t.setId(++currentId);
         meetingList.add(t);
+        store();
     }
 
     @Override
@@ -57,6 +59,7 @@ public abstract class AbstractRepository<T extends Event> implements Repository<
     public void save(final T t) {
         final int id = t.getId();
         final int idx = getIdx(id);
+        meetingList.remove(idx);
         meetingList.add(idx, t);
         store();
     }
@@ -69,9 +72,10 @@ public abstract class AbstractRepository<T extends Event> implements Repository<
 
     public void load() {
         meetingList.addAll(fileService.load());
+        currentId = meetingList.stream().map(Event::getId).max(Comparator.naturalOrder()).orElse(0);
     }
 
-   private void store() {
+    private void store() {
         fileService.store(meetingList);
     }
 

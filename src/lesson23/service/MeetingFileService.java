@@ -7,8 +7,8 @@ import java.util.function.Function;
 
 public class MeetingFileService extends AbstractFileService<Meeting> {
 
-    public MeetingFileService() {
-        super("meeting.db", getParse());
+    public MeetingFileService(final String path) {
+        super(path, getParse());
     }
 
     private static Function<String, Meeting> getParse() {

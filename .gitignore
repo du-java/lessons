@@ -4,6 +4,7 @@
 *.txt
 *.bin
 *.csv
+*.db
 
 # Compiled class file
 *.class

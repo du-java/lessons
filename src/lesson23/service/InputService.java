@@ -16,7 +16,7 @@ public class InputService {
 
     private final Scanner scanner;
 
-    public InputService(Scanner scanner) {
+    public InputService(final Scanner scanner) {
         this.scanner = scanner;
     }
 
@@ -32,15 +32,22 @@ public class InputService {
         }
     }
 
-    public String getLine(String msg) {
+    public String getLine(final String msg) {
         System.out.println(msg);
         return scanner.nextLine();
     }
 
     public int nextInt() {
-        final int nextInt = scanner.nextInt();
-        scanner.nextLine();
-        return nextInt;
+        while (true) {
+            try {
+                final int nextInt = scanner.nextInt();
+                scanner.nextLine();
+                return nextInt;
+            } catch (InputMismatchException ex) {
+                System.out.println();
+                scanner.nextLine();
+            }
+        }
     }
 
     public int nextInt(final String msg) {
@@ -48,7 +55,7 @@ public class InputService {
         return nextInt();
     }
 
-    public LocalDate getLocalDate(String msg) {
+    public LocalDate getLocalDate(final String msg) {
         while (true) {
             try {
                 System.out.printf(msg, DATE_PATTERN);

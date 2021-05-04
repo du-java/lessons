@@ -9,7 +9,7 @@ public class TaskController implements Controller {
     private final InputService inputService;
     private final TaskService taskService;
 
-    public TaskController(TaskService taskService, InputService inputService) {
+    public TaskController(final TaskService taskService, final InputService inputService) {
         this.inputService = inputService;
         this.taskService = taskService;
     }
@@ -51,6 +51,7 @@ public class TaskController implements Controller {
                 case 7:
                     mark();
                     break;
+                default:
             }
         }
     }
