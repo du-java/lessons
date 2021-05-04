@@ -5,18 +5,24 @@ import lesson23.model.Meeting;
 import lesson23.service.InputService;
 import lesson23.service.MeetingService;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class MeetingController {
 
     private final InputService inputService;
     private final MeetingService meetingService;
+    private final FilteredMeetingController filteredMeetingController;
+    private final EditMeetingController editMeetingController;
 
-    public MeetingController(MeetingService meetingService, InputService inputService) {
+    public MeetingController(
+            final MeetingService meetingService,
+            final InputService inputService,
+            final FilteredMeetingController filteredMeetingController,
+            final EditMeetingController editMeetingController) {
         this.inputService = inputService;
         this.meetingService = meetingService;
+        this.filteredMeetingController = filteredMeetingController;
+        this.editMeetingController = editMeetingController;
     }
 
     public void show() {
@@ -25,19 +31,27 @@ public class MeetingController {
             System.out.println("1 - Add meeting");
             System.out.println("2 - Show all meetings");
             System.out.println("3 - Show filtered meetings");
-//            System.out.println("4 - Edit meeting");
+            System.out.println("4 - Edit meeting");
 //            System.out.println("5 - Delete meeting");
             System.out.println("0 - Return");
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
             switch (nextInt) {
-                case 0:
-                    return;
                 case 1:
                     add();
                     break;
                 case 2:
                     showAll();
+                    break;
+                case 3:
+                    filteredMeetingController.show();
+                    break;
+                case 4:
+                    editMeetingController.show();
+                    break;
+                case 0:
+                    return;
+                default:
             }
         }
     }
@@ -61,40 +75,6 @@ public class MeetingController {
     public void showAll() {
         System.out.println("Showing all meetings");
         meetingService.getAll().forEach(System.out::println);
-        System.out.println();
-    }
-
-    public void filtered() {
-        while (true) {
-            System.out.println("Show filtered meetings");
-            System.out.println("1 - by Date");
-            System.out.println("2 - between DateTime");
-            System.out.println("3 - by place");
-            System.out.println("0 - Return");
-            System.out.println("------------------------");
-            final int nextInt = inputService.nextInt();
-            switch (nextInt) {
-                case 0:
-                    return;
-                case 1:
-                    showAllByDate();
-                    break;
-                case 2:
-                    showAll();
-            }
-        }
-    }
-
-    private void showAllByDate() {
-        System.out.println("Show filtered meetings by Date");
-        List<Meeting> allMeetingsByDate;
-        try {
-            LocalDate date = inputService.getLocalDate("Input Date (%s): ");
-            allMeetingsByDate = meetingService.getAllMeetingsByDate(date);
-        } catch (StopException ex) {
-            return;
-        }
-        allMeetingsByDate.forEach(System.out::println);
         System.out.println();
     }
 }
