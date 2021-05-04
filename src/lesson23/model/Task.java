@@ -66,10 +66,6 @@ public class Task implements Event {
 
     @Override
     public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", desc='" + desc + '\'' +
-                ", isCompleted=" + isCompleted +
-                '}';
+        return id + "," + desc + "," + isCompleted;
     }
 }

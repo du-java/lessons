@@ -58,18 +58,20 @@ public abstract class AbstractRepository<T extends Event> implements Repository<
         final int id = t.getId();
         final int idx = getIdx(id);
         meetingList.add(idx, t);
+        store();
     }
 
     @Override
     public void delete(final int id) {
         meetingList.remove(getIdx(id));
+        store();
     }
 
     public void load() {
         meetingList.addAll(fileService.load());
     }
 
-    public void store() {
+   private void store() {
         fileService.store(meetingList);
     }
 
