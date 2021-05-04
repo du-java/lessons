@@ -12,4 +12,8 @@ public interface Service<T extends Event> {
     List<T> getAll();
 
     void save(T t);
+
+    void delete(int id);
+
+
 }

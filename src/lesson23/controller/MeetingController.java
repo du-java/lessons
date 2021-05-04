@@ -32,7 +32,7 @@ public class MeetingController {
             System.out.println("2 - Show all meetings");
             System.out.println("3 - Show filtered meetings");
             System.out.println("4 - Edit meeting");
-//            System.out.println("5 - Delete meeting");
+            System.out.println("5 - Delete meeting");
             System.out.println("0 - Return");
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
@@ -49,6 +49,8 @@ public class MeetingController {
                 case 4:
                     editMeetingController.show();
                     break;
+                case 5 :
+                    delete();
                 case 0:
                     return;
                 default:
@@ -76,5 +78,10 @@ public class MeetingController {
         System.out.println("Showing all meetings");
         meetingService.getAll().forEach(System.out::println);
         System.out.println();
+    }
+
+    public void delete(){
+        int id = inputService.nextInt("Input id to delete");
+        meetingService.delete(id);
     }
 }

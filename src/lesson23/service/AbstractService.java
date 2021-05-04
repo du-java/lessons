@@ -32,4 +32,8 @@ public abstract class AbstractService<T extends Event> implements Service<T> {
     public void save(final T t) {
         repository.save(t);
     }
+
+    public void delete(int id){
+        repository.delete(id);
+    }
 }

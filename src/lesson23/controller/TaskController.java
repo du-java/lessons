@@ -21,8 +21,9 @@ public class TaskController implements Controller {
             System.out.println("2 - Show all tasks");
             System.out.println("3 - Show all not completed");
             System.out.println("4 - Show all completed");
-//            System.out.println("5 - Edit task");
-//            System.out.println("6 - Delete task");
+            System.out.println("5 - Edit task");
+            System.out.println("6 - Delete task");
+            System.out.println("7 - Mark task completed");
             System.out.println("0 - Return");
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
@@ -34,6 +35,22 @@ public class TaskController implements Controller {
                     break;
                 case 2:
                     showAll();
+                    break;
+                case 3:
+                    showAllNotCompleted();
+                    break;
+                case 4:
+                    showAllCompleted();
+                    break;
+                case 5:
+                    edit();
+                    break;
+                case 6:
+                    delete();
+                    break;
+                case 7:
+                    mark();
+                    break;
             }
         }
     }
@@ -49,5 +66,39 @@ public class TaskController implements Controller {
         System.out.println("Showing all Tasks");
         taskService.getAll().forEach(System.out::println);
         System.out.println();
+    }
+
+    public void showAllNotCompleted() {
+        System.out.println("Showing all not completed task");
+        taskService.getAllNotCompleted().forEach(System.out::println);
+        System.out.println();
+    }
+
+    public void showAllCompleted() {
+        System.out.println("Showing all completed task");
+        taskService.getAllCompleted().forEach(System.out::println);
+        System.out.println();
+    }
+
+    public void delete() {
+        int id = inputService.nextInt("Input id to delete");
+        taskService.delete(id);
+    }
+
+    public void edit() {
+        final int id = inputService.nextInt("Input task id");
+        final Task task = taskService.getById(id);
+        final String newDesc = inputService.getLine("Input new Description or press Enter to skip");
+        if (newDesc != null && !newDesc.isEmpty()) {
+            task.setDesc(newDesc);
+        }
+        taskService.save(task);
+    }
+
+    public void mark() {
+        final int id = inputService.nextInt("Input task id");
+        final Task task = taskService.getById(id);
+        task.setCompleted(true);
+        taskService.save(task);
     }
 }

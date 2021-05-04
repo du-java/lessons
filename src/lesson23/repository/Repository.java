@@ -15,4 +15,6 @@ public interface Repository<T extends Event> {
     List<T> getAllBy(Predicate<T> predicate);
 
     void save(T t);
+
+    void delete(int id);
 }

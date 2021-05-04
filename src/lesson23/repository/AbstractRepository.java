@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class AbstractRepository<T extends Event> implements Repository<T> {
+public abstract class AbstractRepository<T extends Event> implements Repository<T> {
 
     private int currentId = 0;
 
@@ -50,8 +50,16 @@ public class AbstractRepository<T extends Event> implements Repository<T> {
     @Override
     public void save(final T t) {
         final int id = t.getId();
-        final T prev = getById(id);
-        final int idx = meetingList.indexOf(prev);
+        final int idx = getIdx(id);
         meetingList.add(idx, t);
+    }
+
+    private int getIdx(int id) {
+        final T prev = getById(id);
+        return meetingList.indexOf(prev);
+    }
+
+    public void delete(int id){
+        meetingList.remove(getIdx(id));
     }
 }
