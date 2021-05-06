@@ -4,6 +4,8 @@ import lesson24.todo.model.Task;
 import lesson24.todo.service.InputService;
 import lesson24.todo.service.TaskService;
 
+import static lesson24.todo.service.TranslateService.getString;
+
 public class TaskController implements Controller {
 
     private final InputService inputService;
@@ -17,14 +19,14 @@ public class TaskController implements Controller {
     public void show() {
         while (true) {
             System.out.println("Tasks");
-            System.out.println("1 - Add task");
-            System.out.println("2 - Show all tasks");
-            System.out.println("3 - Show all not completed");
-            System.out.println("4 - Show all completed");
-            System.out.println("5 - Edit task");
-            System.out.println("6 - Delete task");
-            System.out.println("7 - Mark task completed");
-            System.out.println("0 - Return");
+            System.out.println("1 - " + getString("addTask"));
+            System.out.println("2 - " + getString("allTask"));
+            System.out.println("3 -" + getString("showNotCompletedTask"));
+            System.out.println("4 -" + getString("showCompletedTask"));
+            System.out.println("5 - " + getString("editTask"));
+            System.out.println("6 - " + getString("deleteTask"));
+            System.out.println("7 -" + getString("markCompletedTask"));
+            System.out.println("0 -" + getString("return"));
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
             switch (nextInt) {

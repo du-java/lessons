@@ -26,9 +26,10 @@ public class App {
     }
 
     private static void loadProps() {
-        try {
+        try (FileReader reader = new FileReader("resources/app_todo.properties");
+        ) {
             PROPERTIES = new Properties();
-            PROPERTIES.load(new FileReader("src/lesson23/todo.properties"));
+            PROPERTIES.load(reader);
         } catch (IOException ex) {
             System.err.println("Can start App");
             System.exit(0);

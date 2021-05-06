@@ -4,8 +4,11 @@ import lesson24.todo.exception.StopException;
 import lesson24.todo.model.Meeting;
 import lesson24.todo.service.InputService;
 import lesson24.todo.service.MeetingService;
+import lesson24.todo.service.TranslateService;
 
 import java.time.LocalDateTime;
+
+import static lesson24.todo.service.TranslateService.getString;
 
 public class MeetingController {
 
@@ -28,12 +31,12 @@ public class MeetingController {
     public void show() {
         while (true) {
             System.out.println("Meetings");
-            System.out.println("1 - Add meeting");
-            System.out.println("2 - Show all meetings");
-            System.out.println("3 - Show filtered meetings");
-            System.out.println("4 - Edit meeting");
-            System.out.println("5 - Delete meeting");
-            System.out.println("0 - Return");
+            System.out.println("1 - " + getString("addMeeting"));
+            System.out.println("2 - " + getString("allMeetings"));
+            System.out.println("3 - " + getString("showFiltered"));
+            System.out.println("4 - " + getString("editMeeting"));
+            System.out.println("5 - " + getString("deleteMeeting"));
+            System.out.println("0 - " + getString("return"));
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
             switch (nextInt) {

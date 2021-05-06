@@ -8,6 +8,8 @@ import lesson24.todo.service.MeetingService;
 import java.time.LocalDate;
 import java.util.List;
 
+import static lesson24.todo.service.TranslateService.getString;
+
 public class FilteredMeetingController implements Controller {
 
     private final InputService inputService;
@@ -20,11 +22,11 @@ public class FilteredMeetingController implements Controller {
 
     public void show() {
         while (true) {
-            System.out.println("Show filtered meetings");
-            System.out.println("1 - by Date");
-            System.out.println("2 - between DateTime");
-            System.out.println("3 - by place");
-            System.out.println("0 - Return");
+            System.out.println(getString("showFilteredMeeting"));
+            System.out.println("1 -" + getString("byDate"));
+            System.out.println("2 -" + getString("betweenDate"));
+            System.out.println("3 -" + getString("byPlace"));
+            System.out.println("0 -" + getString("return"));
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
             switch (nextInt) {

@@ -9,6 +9,8 @@ import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static lesson24.todo.service.TranslateService.getString;
+
 public class InputService {
 
     private static final String DATE_TIME_PATTERN = "yy-MM-dd H-mm";
@@ -68,9 +70,9 @@ public class InputService {
     }
 
     private void processingInvalidInput() {
-        System.out.println("Invalid input");
-        System.out.println("1 - Repeat input");
-        System.out.println("0 - Stop");
+        System.out.println(getString("invalidInput"));
+        System.out.println(getString("repeat"));
+        System.out.println(getString("stop"));
         try {
             final int nextInt = scanner.nextInt();
             scanner.nextLine();

@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import static lesson24.todo.service.TranslateService.getString;
+
 public class EditMeetingController implements Controller {
 
     private static final String DATE_TIME_PATTERN = "yy-MM-dd H-mm";
@@ -21,12 +23,12 @@ public class EditMeetingController implements Controller {
     }
 
     public void show() {
-        final int id = inputService.nextInt("Input meeting id");
+        final int id = inputService.nextInt(         getString("inputId"));
         final Meeting meeting = meetingService.getById(id);
-        final String newPlace = inputService.getLine("Input new Place or press Enter to skip");
-        final String newStart = inputService.getLine("Input new Start Date and Time or press Enter to skip");
-        final String newEnd = inputService.getLine("Input new End Date and Time or press Enter to skip");
-        final String newDesc = inputService.getLine("Input new Description or press Enter to skip");
+        final String newPlace = inputService.getLine(getString("inputPlace"));
+        final String newStart = inputService.getLine(getString("inputStart"));
+        final String newEnd = inputService.getLine(  getString("inputDate"));
+        final String newDesc = inputService.getLine( getString("inputDesc"));
 
         if (newPlace != null && !newPlace.isEmpty()) {
             meeting.setPlace(newPlace);

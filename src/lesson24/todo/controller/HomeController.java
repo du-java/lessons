@@ -2,6 +2,8 @@ package lesson24.todo.controller;
 
 import lesson24.todo.service.InputService;
 
+import static lesson24.todo.service.TranslateService.getString;
+
 public class HomeController implements Controller {
 
     private final InputService inputService;
@@ -23,7 +25,7 @@ public class HomeController implements Controller {
         while (true) {
             System.out.println("1 - Meetings");
             System.out.println("2 - Tasks");
-            System.out.println("0 - Exit");
+            System.out.println("0 -" + getString("exit"));
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
             switch (nextInt) {
