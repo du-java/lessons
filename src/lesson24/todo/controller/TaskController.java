@@ -21,12 +21,12 @@ public class TaskController implements Controller {
             System.out.println("Tasks");
             System.out.println("1 - " + getString("addTask"));
             System.out.println("2 - " + getString("allTask"));
-            System.out.println("3 -" + getString("showNotCompletedTask"));
-            System.out.println("4 -" + getString("showCompletedTask"));
+            System.out.println("3 - " + getString("showNotCompletedTask"));
+            System.out.println("4 - " + getString("showCompletedTask"));
             System.out.println("5 - " + getString("editTask"));
             System.out.println("6 - " + getString("deleteTask"));
-            System.out.println("7 -" + getString("markCompletedTask"));
-            System.out.println("0 -" + getString("return"));
+            System.out.println("7 - " + getString("markCompletedTask"));
+            System.out.println("0 - " + getString("return"));
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
             switch (nextInt) {

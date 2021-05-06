@@ -23,12 +23,12 @@ public class EditMeetingController implements Controller {
     }
 
     public void show() {
-        final int id = inputService.nextInt(         getString("inputId"));
+        final int id = inputService.nextInt(getString("inputId"));
         final Meeting meeting = meetingService.getById(id);
         final String newPlace = inputService.getLine(getString("inputPlace"));
         final String newStart = inputService.getLine(getString("inputStart"));
-        final String newEnd = inputService.getLine(  getString("inputDate"));
-        final String newDesc = inputService.getLine( getString("inputDesc"));
+        final String newEnd = inputService.getLine(getString("inputDate"));
+        final String newDesc = inputService.getLine(getString("inputDesc"));
 
         if (newPlace != null && !newPlace.isEmpty()) {
             meeting.setPlace(newPlace);

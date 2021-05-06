@@ -23,10 +23,10 @@ public class FilteredMeetingController implements Controller {
     public void show() {
         while (true) {
             System.out.println(getString("showFilteredMeeting"));
-            System.out.println("1 -" + getString("byDate"));
-            System.out.println("2 -" + getString("betweenDate"));
-            System.out.println("3 -" + getString("byPlace"));
-            System.out.println("0 -" + getString("return"));
+            System.out.println("1 - " + getString("byDate"));
+            System.out.println("2 - " + getString("betweenDate"));
+            System.out.println("3 - " + getString("byPlace"));
+            System.out.println("0 - " + getString("return"));
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
             switch (nextInt) {

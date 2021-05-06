@@ -1,6 +1,11 @@
 package lesson24.todo.model;
 
+import lesson24.todo.controller.FormatService;
+
+import java.sql.Date;
+import java.text.DateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 public class Meeting implements Event {
 
@@ -99,6 +104,6 @@ public class Meeting implements Event {
 
     @Override
     public String toString() {
-        return id + "," + place + "," + start + "," + end + "," + desc;
+        return id + "," + place + "," + FormatService.localeDate(start) + "," + FormatService.localeDate(end) + "," + desc;
     }
 }

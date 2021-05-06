@@ -7,22 +7,30 @@ import lesson24.todo.service.*;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class App {
+public class Todo {
 
     private static Properties PROPERTIES;
 
     public static void main(final String[] args) {
         loadProps();
 
+        setDefaultLocale();
+
         final Scanner scanner = new Scanner(System.in);
         final InputService inputService = new InputService(scanner);
         final TaskController taskController = getTaskController(inputService);
         final MeetingController meetingController = getMeetingController(inputService);
-        final HomeController homeController = new HomeController(inputService, meetingController, taskController);
+        final LanguageController languageController = new LanguageController(inputService);
+        final HomeController homeController = new HomeController(inputService, meetingController, taskController, languageController);
         homeController.show();
+    }
+
+    private static void setDefaultLocale() {
+        Locale.setDefault(Locale.forLanguageTag(getProperties("default-locale")));
     }
 
     private static void loadProps() {
