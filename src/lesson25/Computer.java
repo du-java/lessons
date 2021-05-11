@@ -7,6 +7,16 @@ public class Computer implements Comparable<Computer> {
     private int ram;
 
     @Override
+    public String toString() {
+        return "Computer{" +
+                "name='" + name + '\'' +
+                ", cpu=" + cpu +
+                ", motherboard=" + motherboard +
+                ", ram=" + ram +
+                '}';
+    }
+
+    @Override
     public int compareTo(Computer o) {
         return this.name.compareTo(o.name);
     }

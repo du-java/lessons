@@ -2,7 +2,6 @@ package lesson25;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import netscape.javascript.JSObject;
 import org.json.JSONObject;
 
 public class App06 {
