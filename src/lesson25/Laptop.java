@@ -8,6 +8,9 @@ public class Laptop extends Computer {
         this.name = name;
         this.size = size;
     }
+    public Laptop(){
+
+    }
 
     public String getName() {
         return name;
