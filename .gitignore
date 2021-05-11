@@ -2,6 +2,7 @@
 .vscode/
 out/
 *.iml
+lib/
 
 *.txt
 *.bin
