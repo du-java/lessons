@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="results.xsd">
     <students>
-        <student>
+        <student id="1">
             <login firstname="ivan" lastname="ivanov">cool</login>
             <group>gr1</group>
             <firstname>ivanov</firstname>
@@ -14,7 +14,7 @@
                 <test name="xml" date="2013-03-29" mark="7.9"/>
             </tests>
         </student>
-        <student>
+        <student id="2">
             <login firstname="petr" lastname="petrov">clever</login>
             <group>gr2</group>
             <firstname>petr</firstname>

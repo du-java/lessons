@@ -8,6 +8,15 @@ public class Student {
     private List<Test> tests;
     private String firstname;
     private String lastname;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Student() {
     }
@@ -59,6 +68,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return login + "," + group + "," + firstname + "," + lastname + "," + tests;
+        return id + "," +login + "," + group + "," + firstname + "," + lastname + "," + tests;
     }
 }

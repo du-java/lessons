@@ -22,7 +22,7 @@ public class ResultHandler extends DefaultHandler {
     private List<Test> tests;
 
     private enum Tags {
-        STUDENT, TESTS, TEST, LOGIN, RESULTS, STUDENTS, GROUP
+        STUDENT, TESTS, TEST, LOGIN, RESULTS, STUDENTS, GROUP, LASTNAME, FIRSTNAME
     }
 
     @Override
@@ -33,6 +33,7 @@ public class ResultHandler extends DefaultHandler {
                 break;
             case STUDENT:
                 student = new Student();
+                student.setId(Integer.parseInt(attributes.getValue("id")));
                 break;
             case TESTS:
                 tests = new ArrayList<>();
@@ -54,6 +55,16 @@ public class ResultHandler extends DefaultHandler {
     public void endElement(String uri, String localName, String tag) throws SAXException {
         final Tags tags = Tags.valueOf(tag.toUpperCase());
         switch (tags) {
+            case FIRSTNAME:
+                if (student.getFirstname().equals(value)) {
+                    student.setFirstname(value.toUpperCase());
+                }
+                break;
+            case LASTNAME:
+                if (student.getLastname().equals(value)) {
+                    student.setLastname(value.toUpperCase());
+                }
+                break;
             case STUDENT:
                 students.add(student);
                 break;
