@@ -3,6 +3,7 @@
 out/
 *.iml
 lib/
+target/
 
 *.txt
 *.bin

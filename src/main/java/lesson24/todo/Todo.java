@@ -1,11 +1,11 @@
 package lesson24.todo;
 
+import lesson23.App;
 import lesson24.todo.controller.*;
 import lesson24.todo.repository.MeetingRepository;
 import lesson24.todo.repository.TaskRepository;
 import lesson24.todo.service.*;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Properties;
@@ -34,10 +34,9 @@ public class Todo {
     }
 
     private static void loadProps() {
-        try (FileReader reader = new FileReader("resources/app_todo.properties");
-        ) {
+        try {
             PROPERTIES = new Properties();
-            PROPERTIES.load(reader);
+            PROPERTIES.load(App.class.getClassLoader().getResourceAsStream("app_todo.properties"));
         } catch (IOException ex) {
             System.err.println("Can start App");
             System.exit(0);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="results.xsd">
+<results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="src/main/resources/students/results.xsd">
     <students>
         <student id="1">
             <login firstname="ivan" lastname="ivanov">cool</login>

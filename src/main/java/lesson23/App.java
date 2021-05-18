@@ -5,6 +5,7 @@ import lesson23.repository.MeetingRepository;
 import lesson23.repository.TaskRepository;
 import lesson23.service.*;
 
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -28,7 +29,7 @@ public class App {
     private static void loadProps() {
         try {
             PROPERTIES = new Properties();
-            PROPERTIES.load(new FileReader("src/lesson23/app_todo.properties"));
+            PROPERTIES.load(App.class.getClassLoader().getResourceAsStream("app_todo.properties"));
         } catch (IOException ex) {
             System.err.println("Can start App");
             System.exit(0);

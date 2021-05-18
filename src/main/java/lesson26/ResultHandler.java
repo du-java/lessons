@@ -7,7 +7,9 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -85,13 +87,13 @@ public class ResultHandler extends DefaultHandler {
         value = new String(ch, start, length);
     }
 
-    public List<Student> read(String xml) {
+    public List<Student> read(InputStream xml) {
         try {
             final SAXParser parser = SAXParserFactory
                     .newInstance()
                     .newSAXParser();
 
-            parser.parse(Paths.get(xml).toFile(), this);
+            parser.parse(xml, this);
             return students;
 
         } catch (ParserConfigurationException | SAXException | IOException ex) {
