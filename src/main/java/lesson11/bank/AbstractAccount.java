@@ -24,7 +24,7 @@ public abstract class AbstractAccount implements Account {
 
     @Override
     public void print() {
-        System.out.printf("выводим статус денег %s \n ", currentAmount.toString());
+        System.out.printf("enter status of money %s \n ", currentAmount.toString());
     }
 }
 

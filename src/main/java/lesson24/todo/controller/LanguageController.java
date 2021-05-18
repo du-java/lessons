@@ -17,7 +17,7 @@ public class LanguageController {
         while (true) {
             System.out.println(getString("selectLang"));
             System.out.println("1 - English");
-            System.out.println("2 - Русский");
+            System.out.println("2 - Rus");
             System.out.println("0 - " + getString("exit"));
             System.out.println("------------------------");
             final int nextInt = inputService.nextInt();
