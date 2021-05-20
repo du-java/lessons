@@ -1,0 +1,14 @@
+package lesson27.equal;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Equal {
+
+    CompareBy value() default CompareBy.VALUE;
+}
+

@@ -18,6 +18,12 @@ allprojects {
     apply plugin: 'idea'
 
     dependencies {
+        compileOnly 'org.projectlombok:lombok:1.18.20'
+        annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+        implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+        implementation 'org.slf4j:slf4j-simple:1.7.30'
+
         implementation 'com.jayway.jsonpath:json-path:2.5.0'
     }
 }
