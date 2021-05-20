@@ -4,6 +4,8 @@ out/
 *.iml
 lib/
 target/
+.gradle/
+build/
 
 *.txt
 *.bin

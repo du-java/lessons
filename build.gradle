@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+targetCompatibility = 1.8
+sourceCompatibility = 1.8
+
+group 'by.du'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    dependencies {
+        implementation 'com.jayway.jsonpath:json-path:2.5.0'
+    }
+}
