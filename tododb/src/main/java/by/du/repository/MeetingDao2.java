@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 @Slf4j
 public class MeetingDao2 extends AbstractDao<Meeting> {
 
@@ -21,6 +22,15 @@ public class MeetingDao2 extends AbstractDao<Meeting> {
     private static final String INSERT = "insert into todo (place, description, start_time) VALUES(?, ?, ?)";
     private static final String DELETE = "delete from todo where id = ?";
     private static final String UPDATE = "update todo set place=?, description=?, start_time=? where id = ?";
+
+    public MeetingDao2() {
+        super(Meeting.class);
+    }
+
+    @Override
+    protected String getSqlSelectById() {
+        return SELECT_BY_ID;
+    }
 
     @Override
     protected String getSqlSelectAll() {
@@ -56,23 +66,8 @@ public class MeetingDao2 extends AbstractDao<Meeting> {
         return meetings;
     }
 
-    private Meeting buildMeeting(ResultSet rs) throws SQLException {
-        return Meeting.builder()
-                .id(rs.getInt("id"))
-                .place(rs.getString("place"))
-                .desc(rs.getString("description"))
-                .time(rs.getTimestamp("start_time").toLocalDateTime())
-                .build();
-    }
-
     @Override
-    protected String getSqlSelectById() {
-        return SELECT_BY_ID;
-    }
-
-    @Override
-    protected Optional<Meeting> findById(int id, PreparedStatement st) throws SQLException {
-        st.setInt(1, id);
+    protected Optional<Meeting> findById(PreparedStatement st) throws SQLException {
         try (final ResultSet rs = st.executeQuery()) {
             if (rs.next()) {
                 return Optional.of(buildMeeting(rs));
@@ -80,7 +75,9 @@ public class MeetingDao2 extends AbstractDao<Meeting> {
             return Optional.empty();
         }
     }
-    protected Meeting  create(PreparedStatement st, Meeting meeting) throws SQLException {
+
+    @Override
+    protected Meeting create(PreparedStatement st, Meeting meeting) throws SQLException {
         st.setString(1, meeting.getPlace());
         st.setString(2, meeting.getDesc());
         st.setTimestamp(3, Timestamp.valueOf(meeting.getTime()));
@@ -110,4 +107,12 @@ public class MeetingDao2 extends AbstractDao<Meeting> {
         return meeting;
     }
 
+    private Meeting buildMeeting(ResultSet rs) throws SQLException {
+        return Meeting.builder()
+                .id(rs.getInt("id"))
+                .place(rs.getString("place"))
+                .desc(rs.getString("description"))
+                .time(rs.getTimestamp("start_time").toLocalDateTime())
+                .build();
+    }
 }

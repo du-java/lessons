@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 @Slf4j
 public class TaskDao2 extends AbstractDao<Task> {
 
@@ -22,6 +23,10 @@ public class TaskDao2 extends AbstractDao<Task> {
     private static final String DELETE = "delete from task where id = ?";
     private static final String UPDATE = "update task set isDone=?, description=?, start_date=? where id = ?";
 
+    public TaskDao2() {
+        super(Task.class);
+    }
+
     @Override
     protected String getSqlSelectById() {
         return SELECT_BY_ID;
@@ -29,7 +34,7 @@ public class TaskDao2 extends AbstractDao<Task> {
 
     @Override
     protected String getSqlSelectAll() {
-        return SELECT_ALL ;
+        return SELECT_ALL;
     }
 
     @Override
@@ -41,13 +46,19 @@ public class TaskDao2 extends AbstractDao<Task> {
     protected String getSqlInsert() {
         return INSERT;
     }
+
+    @Override
+    protected String getSqlDelete() {
+        return DELETE;
+    }
+
     @Override
     protected String getSqlUpdate() {
         return UPDATE;
     }
+
     @Override
-    protected Optional<Task> findById(int id, PreparedStatement st) throws SQLException {
-        st.setInt(1, id);
+    protected Optional<Task> findById(PreparedStatement st) throws SQLException {
         try (final ResultSet rs = st.executeQuery()) {
             if (rs.next()) {
                 return Optional.of(buildTask(rs));
@@ -103,10 +114,5 @@ public class TaskDao2 extends AbstractDao<Task> {
                 .desc(rs.getString("description"))
                 .date(rs.getDate("start_date").toLocalDate())
                 .build();
-    }
-
-    @Override
-    protected String getSqlDelete() {
-        return DELETE;
     }
 }
