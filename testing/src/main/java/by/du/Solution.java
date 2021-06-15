@@ -8,10 +8,28 @@ public class Solution {
      */
 
     public static int solution(int given) {
+        String[] digits = String.valueOf(given).split("");
 
+        StringBuilder builder = new StringBuilder();
 
+//        int half = digits.length / 2;
+//        if (digits.length % 2 != 0) {
+//            half++;
+//        }
 
+        for (int i = 0; i < digits.length; i++) {
+            if (i % 2 != 0) {
+                if (i > (digits.length - i - 1)) break;
+                builder.append(digits[digits.length - i]);
+                builder.append(digits[i]);
+            }
+            if (i % 2 == 0) {
+                if (i > digits.length / 2) break;
+                builder.append(digits[i]);
+            }
 
-        return 162534;
+        }
+
+        return Integer.parseInt(builder.toString());
     }
 }
