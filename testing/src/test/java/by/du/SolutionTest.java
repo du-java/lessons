@@ -29,4 +29,5 @@ public class SolutionTest {
     void test_throw() {
         assertThrows(IllegalArgumentException.class, () -> new Solution().test());
     }
+
 }
