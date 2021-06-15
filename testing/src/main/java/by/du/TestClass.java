@@ -10,12 +10,8 @@ public class TestClass {
         return Math.max(x, y);
     }
 
-    public boolean doIt(int x) {
+    public boolean isEven(int x) {
         if (x <= 0) throw new IllegalArgumentException();
-        if (x % 2 == 0) return true;
-        else {
-            return false;
-        }
-
+        return x % 2 == 0;
     }
 }

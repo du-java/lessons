@@ -23,20 +23,20 @@ class TestClassTest {
     @Test
     void testIsEven() {
         TestClass testClass = new TestClass();
-        Boolean result = testClass.doIt(2);
+        boolean result = testClass.isEven(2);
         assertTrue(result);
     }
 
     @Test
     void testIsOdd() {
         TestClass testClass = new TestClass();
-        Boolean result = testClass.doIt(3);
+        boolean result = testClass.isEven(3);
         assertFalse(result);
     }
 
     @Test
     void testIsZero() {
         TestClass testClass = new TestClass();
-        assertThrows(IllegalArgumentException.class, () -> testClass.doIt(0));
+        assertThrows(IllegalArgumentException.class, () -> testClass.isEven(0));
     }
 }
